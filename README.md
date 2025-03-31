@@ -1,7 +1,7 @@
 # code
-Статья и новости.
 
-- [UI Frameworks & Libraries](#ui-frameworks--libraries) _47 projects_
+
+- [await-in-loop](#await-in-loop) _47 projects_
 
 <br>
 
@@ -9,15 +9,97 @@
 
 <a href="#contents"><img align="right" width="15" height="15" src="https://git.io/JtehR" alt="Back to top"></a>
 
-<details><summary><b><a href="https://github.com/mui/material-ui">Material-UI</a></b> (🥇52 ·  ⭐ 92K) - MaterialUI: Ready-to-use foundational React components, free.. <code><a href="http://bit.ly/34MBwT8">MIT</a></code> <code><img src="https://mui.com/static/favicon.ico" style="display:inline;" width="13" height="13"></code></summary>
+<details><summary><b>await-in-loop</code> <code><img src="https://mui.com/static/favicon.ico" style="display:inline;" width="13" height="13"></code></summary>
+const f1 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(1)
+      resolve('one')
+    }, 5000)
+  })
+}
 
-- [GitHub](https://github.com/mui/material-ui) (👨‍💻 3.2K · 🔀 32K · 📦 1.2M · 📋 19K - 8% open · ⏱️ 06.06.2024):
+const f2 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(2)
+      reject('error two')
+    }, 2000)
+  })
+}
 
-	```
-	git clone https://github.com/mui-org/material-ui
-	```
-- [npm](https://www.npmjs.com/package/@material-ui/core) (📥 6M / month · 📦 14K · ⏱️ 03.04.2022):
-	```
-	npm install @material-ui/core
-	```
+const f3 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(3)
+      resolve('three')
+    }, 3000)
+  })
+}
+
+
+f1().then(res => console.log(res))
+f2().then(res => console.log(res))
+f3().then(res => console.log(res))
+
+const  queuePromise = async(arr) => {
+  return await  arr.reduce((acc,current) => {
+    return acc.then(current)
+  }, Promise.resolve())
+}
+
+queuePromise([f1(), f2(), f3()])
+
+async function processArray(array) {
+  for (const item of array) {
+    await item
+  }
+}
+
+processArray([f1(), f2(), f3()])
+
+async function processArray() {
+  let res = Promise.resolve();
+  const result = [];
+
+  res = await f1();
+  result.push(res)
+  res = await f2();
+  result.push(res)
+  res = await f3();
+  result.push(res)
+
+  console.log(result)
+
+}
+
+
+processArray();
+
+
+async function foo(things) {
+  const promises = [];
+  for (const thing of things) {
+    promises.push(thing);
+  }
+
+    const results = await Promise.all(promises);
+    return results;
+ 
+}
+
+
+const res = foo([f1(), f2(), f3()])
+
+res.then(res => console.log(res))
+   .catch(e => console.log(e))
+
+
+
+
+
+
+
+
+
 </details>

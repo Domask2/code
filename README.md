@@ -9,7 +9,7 @@
 
 <details><summary>await-in-loop</summary>
   
-```
+```js
   const f1 = () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {

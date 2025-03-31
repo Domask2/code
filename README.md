@@ -8,7 +8,9 @@
 <a href="#await-in-loop"><img align="right" width="15" height="15" src="https://git.io/JtehR" alt="Back to top"></a>
 
 <details><summary>await-in-loop</summary>
+  
 https://eslint.org/docs/latest/rules/no-await-in-loop
+
 ```js
   const f1 = () => {
     return new Promise((resolve, reject) => {

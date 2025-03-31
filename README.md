@@ -8,7 +8,7 @@
 <a href="#await-in-loop"><img align="right" width="15" height="15" src="https://git.io/JtehR" alt="Back to top"></a>
 
 <details><summary>await-in-loop</summary>
-  <code> 
+ ```
 const f1 = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -90,6 +90,6 @@ const res = foo([f1(), f2(), f3()])
 
 res.then(res => console.log(res))
    .catch(e => console.log(e))
-<code/>
+```
 
 </details>

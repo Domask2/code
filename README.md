@@ -1,13 +1,11 @@
 # code
-
-
-- [await-in-loop](#await-in-loop) _47 projects_
-
+- [await-in-loop](#await-in-loop)
+- 
 <br>
 
 ## UI Frameworks & Libraries
 
-<a href="#contents"><img align="right" width="15" height="15" src="https://git.io/JtehR" alt="Back to top"></a>
+<a href="#await-in-loop"><img align="right" width="15" height="15" src="https://git.io/JtehR" alt="Back to top"></a>
 
 <details><summary><b>await-in-loop</code> <code><img src="https://mui.com/static/favicon.ico" style="display:inline;" width="13" height="13"></code></summary>
 const f1 = () => {

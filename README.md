@@ -7,7 +7,7 @@
 
 <a href="#await-in-loop"><img align="right" width="15" height="15" src="https://git.io/JtehR" alt="Back to top"></a>
 
-<details><summary><b>await-in-loop</code> <code><img src="https://mui.com/static/favicon.ico" style="display:inline;" width="13" height="13"></code></summary>
+<details><summary>await-in-loop</summary>
   <code> 
 const f1 = () => {
   return new Promise((resolve, reject) => {

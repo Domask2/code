@@ -36,62 +36,56 @@
       }, 3000)
     })
   }
+
+  f1().then(res => console.log(res))
+  f2().then(res => console.log(res))
+  f3().then(res => console.log(res))
+
+  const  queuePromise = async(arr) => {
+    return await  arr.reduce((acc,current) => {
+      return acc.then(current)
+    }, Promise.resolve())
+  }
+
+  queuePromise([f1(), f2(), f3()])
+  
+  async function processArray(array) {
+    for (const item of array) {
+      await item
+    }
+  }
+
+  processArray([f1(), f2(), f3()])
+  
+  async function processArray() {
+    let res = Promise.resolve();
+    const result = [];
+  
+    res = await f1();
+    result.push(res)
+    res = await f2();
+    result.push(res)
+    res = await f3();
+    result.push(res)
+  
+    console.log(result)
+  }
+
+  processArray();
+  
+  async function foo(things) {
+    const promises = [];
+    for (const thing of things) {
+      promises.push(thing);
+    }
+  
+      const results = await Promise.all(promises);
+      return results;
+  }
+  
+  const res = foo([f1(), f2(), f3()])
+  
+  res.then(res => console.log(res))
+     .catch(e => console.log(e))
 ```
-
-
-
-
-
-
-f1().then(res => console.log(res))
-f2().then(res => console.log(res))
-f3().then(res => console.log(res))
-
-const  queuePromise = async(arr) => {
-  return await  arr.reduce((acc,current) => {
-    return acc.then(current)
-  }, Promise.resolve())
-}
-
-queuePromise([f1(), f2(), f3()])
-
-async function processArray(array) {
-  for (const item of array) {
-    await item
-  }
-}
-
-processArray([f1(), f2(), f3()])
-
-async function processArray() {
-  let res = Promise.resolve();
-  const result = [];
-
-  res = await f1();
-  result.push(res)
-  res = await f2();
-  result.push(res)
-  res = await f3();
-  result.push(res)
-
-  console.log(result)
-}
-
-processArray();
-
-async function foo(things) {
-  const promises = [];
-  for (const thing of things) {
-    promises.push(thing);
-  }
-
-    const results = await Promise.all(promises);
-    return results;
-}
-
-const res = foo([f1(), f2(), f3()])
-
-res.then(res => console.log(res))
-   .catch(e => console.log(e))
-
 </details>
